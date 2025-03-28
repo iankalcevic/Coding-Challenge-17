@@ -19,3 +19,25 @@ const customer1 = new Customer("Alice", "alice@example.com");
 customer1.addPurchase(100);
 customer1.addPurchase(200);
 console.log("Total Amount Spent:", customer1.getTotalSpent());
+
+// Task 2 - Create a sales rep class
+
+class SalesRep {
+    constructor(name) {
+        this.name = name; //Get customer name
+        this.clients = []; //Array of customer objects
+    }
+    addClient(customer) {
+        this.clients.push(customer); //Add a customer to list 
+    }
+    getClientTotal(name) {
+        const client = this.clients.find(c => c.name === name);
+        return client ? client.getTotalSpent() : 0;
+    }; //Find client by name
+};
+
+//Log sales rep clients
+const rep1 = new SalesRep("Bob");
+rep1.addClient(customer1);
+console.log("Sales Rep Clients:", rep1.clients);
+console.log("Client Total:", rep1.getClientTotal("Alice"));
