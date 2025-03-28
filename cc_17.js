@@ -55,6 +55,26 @@ class VIPCustomer extends Customer {
     };
 };
 
+// Task 4 - Build a client report system
+
+const customers = [
+    customer1,
+    vip1,
+    new Customer("Jake", "Jake@email.com"),
+    new VIPCustomer("Jack", "jack@vip.com", Platinum)
+]; //Store customers
+
+const totalRevenue = customers.reduce((total, customer) => total + customer.getTotalSpent(), 0);
+const highSpenders = customers.filter(customer => customer.getTotalSpent() > 500); //Find customers that spend over 500
+const customerSummary = customers.map(customer => ({
+    name: customer.name,
+    total: customer.getTotalSpent()
+})); //Create an array of customer names and total spent
+
+//Log revenue and customers
+console.log("Total revenue:", totalRevenue);
+console.log("High spenders:", highSpenders);
+console.log("Customer Summary:", customerSummary);
 //Log VIP total spent with bonus
 const vip1 = new VIPCustomer("Charlie", "charlie@vip.com", "Gold");
 vip1.addPurchase(500);
